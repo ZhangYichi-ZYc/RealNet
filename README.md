@@ -1,6 +1,9 @@
+将以下RealNet的readme文件翻译为中文
+
+
 # RealNet
 
-**💡 This is the official implementation of the paper "RealNet: A Feature Selection Network with Realistic Synthetic Anomaly for Anomaly Detection (CVPR 2024)" [[arxiv]](https://arxiv.org/abs/2403.05897)**  
+**?? This is the official implementation of the paper "RealNet: A Feature Selection Network with Realistic Synthetic Anomaly for Anomaly Detection (CVPR 2024)" [[arxiv]](https://arxiv.org/abs/2403.05897)**  
   
   
 RealNet is a simple yet effective framework that incorporates three key innovations: First, we propose Strength-controllable Diffusion Anomaly Synthesis (SDAS), a diffusion process-based synthesis strategy capable of generating samples with varying anomaly strengths that mimic the distribution of real anomalous samples. Second, we develop Anomaly-aware Features Selection (AFS), a method for selecting representative and discriminative pre-trained feature subsets to improve anomaly detection performance while controlling computational costs. Third, we introduce Reconstruction Residuals Selection (RRS), a strategy that adaptively selects discriminative residuals for comprehensive identification of anomalous regions across multiple levels of granularity.
@@ -9,15 +12,15 @@ RealNet is a simple yet effective framework that incorporates three key innovati
 <div align=center><img width="850" src="assets/pipeline.JPG"/></div>  
 
 
-### 🏆 Anomaly synthesis  
+### ?? Anomaly synthesis  
 We employ the diffusion model for anomaly synthesis, providing `360k` anomaly images for anomaly detection models training across four datasets (MVTec-AD, MPDD, BTAD, and VisA). [[Download]](https://drive.google.com/drive/folders/12B1SMmdsVc6UPDoLP6cctn4YvQfk8cS6?usp=drive_link)
 <div align=center><img width="800" src="assets/anomaly_synthesis.jpg"/></div>  
   
 
-### 🏆 Diffusion model checkpoints  
+### ?? Diffusion model checkpoints  
 The diffusion model [[Download]](https://drive.google.com/drive/folders/1kQCuAc0Tlf-XZosJLgKleUYvPJ33zyBK?usp=drive_link) and the guided classifier (optional) [[Download]](https://drive.google.com/drive/folders/1x-TSOXVYSQgvub1de5m8R_FF4m8pD1ow?usp=drive_link) trained on the MVTec-AD, MPDD, BTAD, and VisA datasets.  
 
-### 🏆 Feature reconstruction-based method
+### ?? Feature reconstruction-based method
 
 |      | Image AUROC     | Pixel AUROC     |
 | :----------: | :----------: | :----------: |
@@ -26,7 +29,7 @@ The diffusion model [[Download]](https://drive.google.com/drive/folders/1kQCuAc0
 | BTAD | 96.1 | 97.9 |
 | VisA | 97.8 | 98.8 |
 
-## 🔧 Installation
+## ?? Installation
 
 To run experiments, first clone the repository and install `requirements.txt`.
 
@@ -50,8 +53,8 @@ If you use `DTD` (optional) dataset for anomaly synthesis, please download:
   
 Unzip them to the `data`. Please refer to [data/README](data/README.md).  
   
-## 🚀 Experiments
-### 🌞 Training diffusion model  
+## ?? Experiments
+### ?? Training diffusion model  
 
 We load the diffusion model weights pre-trained on ImageNet, as follows:  
 
@@ -82,7 +85,7 @@ We provide the following checkpoints:
 - **VisA: [[Diffusion]](https://drive.google.com/file/d/1FzgW5xRz-TtPBkbMBbSoAJDq5gkO6Yd_/view?usp=drive_link), [[Guided Classifier]](https://drive.google.com/file/d/15bdOwBdO_bd74p2rcIKt9pTMDzxgjoJW/view?usp=drive_link)**  
 
 Download them to the `experiments`. Please refer to [experiments/README](experiments/README.md).  
-### 🌞   Strength-controllable Diffusion Anomaly Synthesis
+### ??   Strength-controllable Diffusion Anomaly Synthesis
 
 Sample anomaly images using `1*RTX3090 GPU`:  
 ```
@@ -96,7 +99,7 @@ We provide `10k` sampled anomaly images with a resolution of `256*256` for each 
 - **VisA [[Download]](https://drive.google.com/file/d/1Dq75NOUWIUdt_DV6JiVhwwYAKR7EeVJC/view?usp=drive_link)**  
 
 
-### 🌞  Training RealNet   
+### ??  Training RealNet   
   
 Train RealNet using `1*RTX3090 GPU`:  
 ```
@@ -106,7 +109,7 @@ $ python -m torch.distributed.launch --nproc_per_node=1  train_realnet.py --data
 [realnet.yaml](experiments/MVTec-AD/realnet.yaml) provides various configurations during the training.  
   
 More commands can be found in [run.sh](run.sh).  
-### 🌞  Evaluating RealNet  
+### ??  Evaluating RealNet  
   
 Calculating Image AUROC, Pixel AUROC, and PRO, and generating qualitative results for anomaly localization:
 ```
@@ -114,7 +117,7 @@ $ python  evaluation_realnet.py --dataset MVTec-AD --class_name bottle
 ```  
 <div align=center><img width="850" src="assets/results.jpg"/></div>  
 
-## ✈️ Others  
+## ?? Others  
   
 We also provide some generated `normal` images for each category (setting the anomaly strength to 0 in the paper), which can be downloaded through the following link:   
 - **MVTec-AD [[Download]](https://drive.google.com/file/d/1e4A4cGJkCYD4KCD0GHutSleaJqHM5fNb/view?usp=drive_link)**  
@@ -126,7 +129,7 @@ The additional file directory of this repository:
 - **[[Baidu Cloud]](https://pan.baidu.com/s/1Aqc1TwTMXTemlR3-TjyuaA?pwd=6789) (pwd 6789)**  
   
 Code reference: **[UniAD](https://github.com/zhiyuanyou/UniAD)** and **[BeatGans](https://github.com/openai/guided-diffusion)**.
-## 🔗 Citation  
+## ?? Citation  
 
 If this work is helpful to you, please cite it as:
 ```
@@ -139,4 +142,3 @@ If this work is helpful to you, please cite it as:
       primaryClass={cs.CV}
 }
 ```
-
